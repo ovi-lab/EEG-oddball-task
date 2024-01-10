@@ -1,0 +1,25 @@
+<OpenViBE-SettingsOverride>
+	<SettingValue>false</SettingValue>
+    <SettingValue>false</SettingValue>
+    <SettingValue>OVTK_StimulationId_VisualStimulationStop</SettingValue>
+
+    <SettingValue>${Player_ScenarioDirectory}/assets/fixation_cross.png</SettingValue>
+	<SettingValue>OVTK_GDF_Cross_On_Screen</SettingValue>
+
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s0_0.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_A0</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s0_1.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_A1</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_0.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_B0</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_1.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_B1</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_2.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_B2</SettingValue>
+
+    <SettingValue>${Player_ScenarioDirectory}/assets/non-freq.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_01</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/freq.png</SettingValue>
+	<SettingValue>OVTK_StimulationId_Label_02</SettingValue>
+    
+</OpenViBE-SettingsOverride>
