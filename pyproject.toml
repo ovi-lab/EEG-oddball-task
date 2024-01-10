@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "oddball"
+version = "0.1.0"
+description = ""
+authors = ["erangad <erangadesaa@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jupyter = "^1.0.0"
+pillow = "^10.2.0"
+numpy = "^1.24.0"
+mne = "^1.6.0"
+PyQt6 = "^6.6.1"
+pandas = "^1.5.3"
+neurokit2 = "^0.2.7"
+xgboost = "^2.0.3"
+deepdiff = "^6.7.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
