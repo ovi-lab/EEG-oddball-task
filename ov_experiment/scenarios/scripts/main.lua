@@ -16,6 +16,7 @@ function initialize(box)
     for _ = 1, num_blocks do
         -- Create the list of trials
         trials = {}
+        local odd_count = 0
         for k = 1, num_trials do
             random_num = math.random(0, 10)
 
@@ -23,10 +24,12 @@ function initialize(box)
                 table.insert(trials, stimcodes.shapes.freq)
             else
                 table.insert(trials, stimcodes.shapes.non_freq)
+                odd_count  = odd_count + 1
             end
             table.insert(ITI, durations.ITI[k % #durations.ITI +1])
             table.insert(ISI, durations.ISI[k % #durations.ISI +1])
         end
+        box:log('Warning',tostring(odd_count))
         table.insert(blocks, trials)
     end
 
