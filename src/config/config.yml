@@ -1,0 +1,30 @@
+# config values
+# all paths are relative to the root path (gitignore location)
+
+# General
+data_dir =  ov_experiment/scenarios/data
+data_format = gdf
+
+#tools
+ov_stim_list_path: src/tools/stimulation_list.txt
+oddball_stim_path: src/tools/axcpt_stimulation_groups.yaml
+eego_electrode_map_path: src/tools/eego_electrode_map.txt
+
+#openvibe scenario
+
+
+target_channels:
+
+
+non_data_channels:
+  - Tgt
+  - SC
+
+notch_freqs: 60
+l_freq: 2
+h_freq: 20
+
+
+epoch_tmin: -0.5
+epoch_tmax: 1
+
