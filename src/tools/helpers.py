@@ -1,43 +1,49 @@
 import os
 from typing import Callable
+import  yaml
+import pandas as pd
 
-import neurokit2 as nk
+from config import Config
 
-from src.config import CONFIG
+configObj = Config()
+configss = configObj.getConfigSnapshot()
 
 def getOVStimCodes() -> dict[str, int]:
-    ovStimListPath = os.path.join(CONFIG.root, CONFIG.ov_stim_list_path)
-    with open(ovStimListPath, "r") as f:
-        lines = f.readlines()
-        
     ovStimCodes = {}
-    for line in lines:
-        entries = line.split()
-        ovStimCodes[entries[0]] = int(entries[2], base=16)
-        
+    ovStimListPath = os.path.join(configss['root'],
+                                   configss['ov_stim_list_path'])
+    with open(ovStimListPath) as file:
+        lines = file.readlines()
+        for line in lines:
+            val = line.split() 
+            ovStimCodes[val[0].strip()] = int(val[2].strip(), base =16)
+
+   
     if not len(ovStimCodes) == len(lines):
-        raise RuntimeError(
+        raise Exception (
             "The number of stimulation codes read from the stimulations " +
             "file is not equal to the number of lines in that file."
-        )
+                         )    
         
     return ovStimCodes
 
 def getChannelNamesEEGO() -> list[str]:
-    path = os.path.join(CONFIG.root, CONFIG.eego_electrode_map_path)
+    path = os.path.join(configss['root'],
+                         configss['eego_electrode_map_path'])
     with open(path, "r") as f:
         channelNames = [line.strip() for line in f]
     return channelNames
 
-def getSupportedMetrics() -> dict[str, Callable]:
-    supportedMetrics = {
-        "ApEn" : nk.entropy_approximate,
-        "SampEn" : nk.entropy_sample,
-        "FE" : nk.entropy_fuzzy,
-        "MSE" : nk.entropy_multiscale,
-        "MFE" : nk.complexity_fuzzymse
-    }
-    # Make sure that supported metrics matches those specified in config
-    assert set(supportedMetrics) == set(CONFIG.protected["supported_metrics"])
-    
-    return supportedMetrics
+
+def getStimGroups():
+    stimGroups = {}
+    path = os.path.join(configss['root'], configss['oddball_stim_path'])
+
+    with open(path, 'r') as file: 
+        contents = yaml.safe_load(file)
+
+        if contents is not None:
+            stimGroups.update(contents)
+    # to flatten the stim dictionary json_normalize is used
+    df = pd.json_normalize(stimGroups, sep='/')
+    return df.to_dict(orient='records')[0]

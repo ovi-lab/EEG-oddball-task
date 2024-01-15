@@ -2,12 +2,12 @@
 # all paths are relative to the root path (gitignore location)
 
 # General
-data_dir =  ov_experiment/scenarios/data
-data_format = gdf
+data_dir: ov_experiment/scenarios/data
+# data_format: gdf  should be gdf file by default
 
 #tools
 ov_stim_list_path: src/tools/stimulation_list.txt
-oddball_stim_path: src/tools/axcpt_stimulation_groups.yaml
+oddball_stim_path: src/tools/oddball_stimulation_groups.yaml
 eego_electrode_map_path: src/tools/eego_electrode_map.txt
 
 #openvibe scenario
