@@ -1,5 +1,7 @@
 import os
 from typing import Callable
+import  yaml
+import pandas as pd
 
 from config import Config
 
@@ -31,3 +33,17 @@ def getChannelNamesEEGO() -> list[str]:
     with open(path, "r") as f:
         channelNames = [line.strip() for line in f]
     return channelNames
+
+
+def getStimGroups():
+    stimGroups = {}
+    path = os.path.join(configss['root'], configss['oddball_stim_path'])
+
+    with open(path, 'r') as file: 
+        contents = yaml.safe_load(file)
+
+        if contents is not None:
+            stimGroups.update(contents)
+    # to flatten the stim dictionary json_normalize is used
+    df = pd.json_normalize(stimGroups, sep='/')
+    return df.to_dict(orient='records')[0]
