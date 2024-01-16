@@ -8,7 +8,7 @@ from config import Config
 configObj = Config()
 configss = configObj.getConfigSnapshot()
 
-def getOVStimCodes() -> dict[str, int]:
+def getOVStimCodes():# -> dict[str: int]
     ovStimCodes = {}
     ovStimListPath = os.path.join(configss['root'],
                                    configss['ov_stim_list_path'])
@@ -27,7 +27,7 @@ def getOVStimCodes() -> dict[str, int]:
         
     return ovStimCodes
 
-def getChannelNamesEEGO() -> list[str]:
+def getChannelNamesEEGO(): # -> list[str]:
     path = os.path.join(configss['root'],
                          configss['eego_electrode_map_path'])
     with open(path, "r") as f:

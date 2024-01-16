@@ -21,10 +21,20 @@ non_data_channels:
   - SC
 
 notch_freqs: 60
-l_freq: 2
-h_freq: 20
+l_freq: 0.1
+h_freq: 30
 
 
-epoch_tmin: -0.5
-epoch_tmax: 1
+epoch_tmin: -0.2
+epoch_tmax: 0.6
+
+baseline_correction_l: -0.2
+baseline_correction_h: 0
+
+
+central_perital: 
+  - 7Z
+
+
+
 
