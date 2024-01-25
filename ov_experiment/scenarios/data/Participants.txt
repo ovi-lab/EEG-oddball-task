@@ -3,3 +3,6 @@ P2 - Soonuk
 P3 - Anuradha
 P4 - Sharrif
 P5 - Bak 
+P6 - Tarik
+P7 - Omang
+P8 - Jaisee

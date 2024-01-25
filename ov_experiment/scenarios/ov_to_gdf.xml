@@ -99,7 +99,7 @@
 					<TypeIdentifier>(0x330306dd, 0x74a95f98)</TypeIdentifier>
 					<Name>Filename</Name>
 					<DefaultValue></DefaultValue>
-					<Value>C:/Users/erang/Desktop/Oddball/ov_experiment/scenarios/data/P5/P5.ov</Value>
+					<Value>C:/Users/erang/Desktop/Oddball/ov_experiment/scenarios/data/P6/P6.ov</Value>
 					<Modifiability>false</Modifiability>
 				</Setting>
 			</Settings>
@@ -206,7 +206,7 @@
 					<TypeIdentifier>(0x330306dd, 0x74a95f98)</TypeIdentifier>
 					<Name>Filename</Name>
 					<DefaultValue>record-[$core{date}-$core{time}].gdf</DefaultValue>
-					<Value>C:/Users/erang/Desktop/Oddball/ov_experiment/scenarios/data/P5/P5.gdf</Value>
+					<Value>C:/Users/erang/Desktop/Oddball/ov_experiment/scenarios/data/P6/P6.gdf</Value>
 					<Modifiability>false</Modifiability>
 				</Setting>
 			</Settings>
