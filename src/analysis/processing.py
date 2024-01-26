@@ -52,7 +52,11 @@ def eventEpochdata(raw):
 
     inv_stimCodesMap =  { v: k for k, v in stimcodes.items()}
     inv_stimGroupsMap = { v: k for k, v in stimGroups.items() }
-    modified_event_dict =  { inv_stimGroupsMap[inv_stimCodesMap[int(k)]] :v for k,v in event_dict.items()}
+
+    # if check to make sure only get the relevant keys 
+    modified_event_dict =  { inv_stimGroupsMap[inv_stimCodesMap[int(k)]] :
+                            v for k,v in event_dict.items() 
+                            if inv_stimCodesMap[int(k)] in inv_stimGroupsMap}
 
     # only select events related to odd and the frequent stimuli
     epoch_event_dict =  {k:v for k, v in modified_event_dict.items() if 'freq' in k}     
@@ -64,10 +68,18 @@ def eventEpochdata(raw):
     reject_criteria = dict(eeg=100e-6)  # 100 µV
 
     # baseline correction
-    baseline_correction_l = configss['baseline_correction_l'] if configss['baseline_correction_l'] is not None else None 
-    baseline_correction_h = configss['baseline_correction_h'] if configss['baseline_correction_h'] is not None else None
+    baseline_correction_l = configss['baseline_correction_l'] \
+        if configss['baseline_correction_l'] is not None else None 
+    
+    baseline_correction_h = configss['baseline_correction_h'] \
+        if configss['baseline_correction_h'] is not None else None
 
-    epochs = mne.Epochs(raw, events_from_annot, event_id=epoch_event_dict, tmin=tmin, tmax=tmax, preload=True, reject=reject_criteria, baseline=(baseline_correction_l, baseline_correction_h))
+    epochs = mne.Epochs(raw, events_from_annot, 
+                        event_id=epoch_event_dict, tmin=tmin, tmax=tmax,
+                          preload=True, reject=reject_criteria, 
+                        baseline=(
+                            baseline_correction_l,
+                              baseline_correction_h))
 
     return epochs, epoch_event_dict
 
