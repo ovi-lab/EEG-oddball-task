@@ -13,7 +13,6 @@ def loadData(partipantId):
     participant_name = 'P' + str(partipantId)
     partipant_data_path =  participant_name + '/' + participant_name +'.gdf'
     path = os.path.join(configss['root'], configss['data_dir'] , partipant_data_path ) 
-    print(path)
     raw  = mne.io.read_raw_gdf(path)
     return raw
 
