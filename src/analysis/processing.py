@@ -1,7 +1,8 @@
 import mne
 import pandas as pd
 import tools.helpers
-import os 
+import os
+import matplotlib.pyplot as plt 
 
 from config import Config
 configObj = Config()
@@ -160,6 +161,19 @@ def eventEpocshByBlocks(raw):
     return epochs, meta_event_id
 
 
+# CI: confidence interval
+# roi: interested channels 
+# evokeds : mne evok signals 
+def getERP(evokeds, roi, ci, invert = False):
+    #plot evokeds at 0.9 CI
+    fig, ax = plt.subplots()
+    mne.viz.plot_compare_evokeds(evokeds, picks= roi, ci = ci , 
+                                styles = {"oddball": {"color" :'red'}, 
+                                        "control":{"color": 'blue'}}, 
+                                    show =False, axes = ax )
+    if(invert): 
+        ax.invert_yaxis()
+    
+    ax.set_ylabel("V")
 
-def plot():
-    pass
+    plt.show()
