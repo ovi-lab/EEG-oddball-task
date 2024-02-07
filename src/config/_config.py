@@ -1,5 +1,6 @@
 import logging 
-import os 
+import os
+import glob 
 
 import yaml
 
@@ -7,17 +8,35 @@ logger = logging.Logger(__name__)
 
 class Config:
     def __init__(self):
+
+        '''
         fileRoot = os.getcwd() 
 
         rootDir = os.path.dirname(fileRoot)
 
-        '''check if root directory actually exists '''
+        #check if root directory actually exists
 
         if not (os.path.isdir(rootDir)):
             raise Exception (" Could not find the root directroy path on"
                              + fileRoot )
         else:
             root = rootDir
+
+        '''   
+
+        file_path = os.path.abspath(__file__)
+
+        root_file = glob.glob(file_path,'Oddball\**\.gitignore', recursive=True)
+
+        ## C:\Users\erang\Desktop\Oddball\.gitignore
+
+        if(not root_file):
+             raise Exception (" Could not find the root directroy path on"
+                             + file_path )
+        else:
+             self.__root =   root_file[0]
+
+
 
         self.__root =   root
         confog_path_from_root =  os.path.relpath(os.path.dirname(os.path.abspath(__file__)), start = self.__root)
