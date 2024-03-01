@@ -2,6 +2,7 @@ import os
 from typing import Callable
 import  yaml
 import pandas as pd
+import mne 
 
 from config import Config
 
@@ -47,3 +48,11 @@ def getStimGroups():
     # to flatten the stim dictionary json_normalize is used
     df = pd.json_normalize(stimGroups, sep='/')
     return df.to_dict(orient='records')[0]
+
+
+def getMontage():
+    path = os.path.join(configss['root'], configss['electrode_layout_path'])
+    montage = mne.channels.read_custom_montage(path)
+
+# fig1 = neonatal_montage.plot(sphere=(0.00, -0.04, 0.00, 0.1255))   plotting 
+    return montage

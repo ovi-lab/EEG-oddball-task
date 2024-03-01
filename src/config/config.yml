@@ -20,6 +20,8 @@ target_channels:
 non_data_channels:
   - Tgt
   - SC
+  - 11L
+  - 11R
 
 notch_freqs: 60
 l_freq: 0.1

@@ -39,6 +39,10 @@ def preprocessing(raw):
 
     raw_filtered =  raw_filtered.notch_filter(freqs=notch_freqs,
                                              picks= data_channels)
+    
+    montage = tools.helpers.getMontage()
+
+    raw_filtered.set_montage(montage)
 
     return  raw_filtered
 
@@ -177,3 +181,15 @@ def getERP(evokeds, roi, ci, invert = False):
     ax.set_ylabel("V")
 
     plt.show()
+
+
+def getERPMontage(evokeds):
+    mne.viz.plot_compare_evokeds(
+    evokeds,
+    picks="eeg",
+    ci = 0.95,
+    styles = {"oddball": {"color" :'red'}, 
+                                        "control":{"color": 'blue'}}, 
+    axes="topo",
+    ylim = dict(eeg=[-10e-6, 10e-6]), 
+)    
