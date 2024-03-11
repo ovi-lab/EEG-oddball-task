@@ -2,7 +2,8 @@ import mne
 import pandas as pd
 import tools.helpers
 import os
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+from mne.preprocessing import ICA 
 
 from config import Config
 configObj = Config()
@@ -44,7 +45,9 @@ def preprocessing(raw):
 
     raw_filtered.set_montage(montage)
 
-    return  raw_filtered
+    raw_artifact_corrected = applyICA(raw_filtered)
+
+    return  raw_artifact_corrected
 
 
 def eventEpochdata(raw):
@@ -193,3 +196,33 @@ def getERPMontage(evokeds):
     axes="topo",
     ylim = dict(eeg=[-10e-6, 10e-6]), 
 )    
+    
+
+
+def applyICA(raw):
+    ica = ICA(n_components=15, max_iter="auto", random_state=97)
+    ica.fit(raw)
+
+    ica.exclude = []
+    num_excl = 0
+    max_ic = 2
+    z_thresh = 3.5
+    z_step = .05
+
+    while num_excl < max_ic:
+        eog_indices, eog_scores = ica.find_bads_eog(raw,
+                                                ch_name=['1L', '1R', '2LC', '2RC'], 
+                                                threshold=z_thresh
+                                                )
+        num_excl = len(eog_indices)
+        z_thresh -= z_step # won't impact things if num_excl is ≥ n_max_eog 
+
+# assign the bad EOG components to the ICA.exclude attribute so they can be removed later
+    ica.exclude = eog_indices
+    ica.apply(raw)
+
+    return raw
+
+
+
+
