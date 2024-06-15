@@ -30,6 +30,9 @@ def preprocessing(raw):
 
     raw = raw.pick(data_channels)
 
+    #set average mastoid ref
+    raw.set_eeg_reference(ref_channels=['3LD'])
+
     l_freq = configss['l_freq'] if configss['l_freq'] is not None else None 
     h_freq = configss['h_freq'] if configss['h_freq'] is not None else None 
     raw_filtered = raw.filter(l_freq=l_freq, h_freq=h_freq,
@@ -171,13 +174,13 @@ def eventEpocshByBlocks(raw):
 # CI: confidence interval
 # roi: interested channels 
 # evokeds : mne evok signals 
-def getERP(evokeds, roi, ci, invert = False):
+def getERP(evokeds, roi, ci, invert = False, vlines = [0.0]):
     #plot evokeds at 0.9 CI
     fig, ax = plt.subplots()
     mne.viz.plot_compare_evokeds(evokeds, picks= roi, ci = ci , 
                                 styles = {"oddball": {"color" :'red'}, 
                                         "control":{"color": 'blue'}}, 
-                                    show =False, axes = ax )
+                                    show =False, axes = ax, vlines = vlines )
     if(invert): 
         ax.invert_yaxis()
     

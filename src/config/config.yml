@@ -22,6 +22,7 @@ non_data_channels:
   - SC
   - 11L
   - 11R
+  - 3RD
 
 notch_freqs: 60
 l_freq: 1
