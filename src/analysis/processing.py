@@ -17,7 +17,7 @@ def loadData(partipantId):
     path = os.path.join(configss['root'], configss['data_dir'] , partipant_data_path ) 
     raw  = mne.io.read_raw_gdf(path, preload=True)
     # scales everything to volts from microvolts
-    raw = raw.apply_function(lambda x: x * 1e-6)
+    # raw = raw.apply_function(lambda x: x * 1e6)
     return raw
 
 def preprocessing(raw):
