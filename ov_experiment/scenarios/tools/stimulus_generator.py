@@ -58,43 +58,43 @@ def makeLetterStims(dirName, **kwargs):
         
 def makeInstructions(dirName, **kwargs):
     instructions = [
-        "Hello",
+        "Hello!",
+        "Welcome to the experiment!",
         "\n",
-        "This is the instruction page :)",
-        "Press the space bar to continue"
+        "Please press the SPACEBAR to proceed."
     ]
     instructions = [
         [
             [
-                "Hello",
+                "Hello!",
+                "Welcome to the experiment!",
                 "\n",
-                "This is the instruction page :)",
-                "Press the space bar to continue"
+                "Please press the SPACEBAR to ."
             ],
             [
-                "Here you are asked to mentally count number of blue squares.",
+                "Here you are asked to mentally count how many blue squares you see.",
                 "\n",
-                "You will be shown an image of a cross. For the duration",
+                "You will be shown a cross for the duration of the experiment.",
                 "\n",
-                "Press the space bar to start the trial."
+                "Press SPACEBAR to begin the trial."
             ]
         ],
         [
             [
-                "Start of a block.",
+                "Start of a Block.",
                 "\n",
-                "Press the spacebar to begin the trials."
+                "Press SPACEBAR to begin the trials."
             ],
              [
-                "End of a block.",
+                "End of a Block.",
                 "\n",
-                "Press the spacebar to continue."
+                "Press SPACEBAR to continue."
             ]
             ,
              [
                 "End of the experiment.",
                 "\n",
-                 "Thank you.",
+                "Thank you for participating!",
             ]
         ]
     ]
