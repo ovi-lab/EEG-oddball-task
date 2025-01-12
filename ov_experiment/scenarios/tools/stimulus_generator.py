@@ -69,7 +69,7 @@ def makeInstructions(dirName, **kwargs):
                 "Hello!",
                 "Welcome to the experiment!",
                 "\n",
-                "Please press the SPACEBAR to ."
+                "Please press the SPACEBAR to proceed."
             ],
             [
                 "Here you are asked to mentally count how many blue squares you see.",
