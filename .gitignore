@@ -400,6 +400,6 @@ FodyWeavers.xsd
 
 *.vs
 
-# ov_experiment/scenarios/data/
+ov_experiment/scenarios/data/
 .vs
 
