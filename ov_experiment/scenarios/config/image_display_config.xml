@@ -17,9 +17,9 @@
     <SettingValue>${Player_ScenarioDirectory}/assets/instructions_s1_2.png</SettingValue>
 	<SettingValue>OVTK_StimulationId_Label_B2</SettingValue>
 
-    <SettingValue>${Player_ScenarioDirectory}/assets/non-freq.png</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/odd.png</SettingValue>
 	<SettingValue>OVTK_StimulationId_Label_01</SettingValue>
-    <SettingValue>${Player_ScenarioDirectory}/assets/freq.png</SettingValue>
+    <SettingValue>${Player_ScenarioDirectory}/assets/standard.png</SettingValue>
 	<SettingValue>OVTK_StimulationId_Label_02</SettingValue>
     
 </OpenViBE-SettingsOverride>
